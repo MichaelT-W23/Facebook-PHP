@@ -103,9 +103,7 @@ h2 {
 }
 
 .card-header {
-  /* background-color: #f2f2f2; */
-  background-color: purple;
-  color: white;
+  background-color: #f2f2f2;
   padding: 15px;
   font-size: 18px;
   font-weight: bold;
