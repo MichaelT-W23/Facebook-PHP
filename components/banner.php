@@ -1,4 +1,3 @@
-<!-- banner.php -->
 <div class="banner">
     <h1>thefacebook</h1>
 </div>
@@ -18,4 +17,5 @@ body {
     font-size: 18px;
     font-weight: bold;
 }
+
 </style>

@@ -17,6 +17,7 @@ $all_rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_close($dbc);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@ mysqli_close($dbc);
             if (!empty($all_rows)) {
                 foreach ($all_rows as $row) {
                     echo '<div class="card">';
-                    echo '  <a href="/posts?userid=' . htmlspecialchars($row['id']) . '">';
+                    echo '  <a href="/posts?userid=' . htmlspecialchars($row['id']) . '&name=' . urlencode($row['name']) . '">';
                     echo '      <div class="card-header">' . htmlspecialchars($row['name']) . '</div>';
                     echo '      <div class="card-body">';
                     echo '          <p><strong>School:</strong> ' . htmlspecialchars($row['school']) . '</p>';
@@ -58,64 +59,64 @@ mysqli_close($dbc);
 <style>
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
 }
 
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .card {
-    width: 300px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.2s ease-in-out;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .card a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .card-header {
-    background-color: #f2f2f2;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
+  background-color: #f2f2f2;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-body {
-    padding: 15px;
+  padding: 15px;
 }
 
 .card-body p {
-    margin: 5px 0;
-    color: #555;
+  margin: 5px 0;
+  color: #555;
 }
 
 </style>

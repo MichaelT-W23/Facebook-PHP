@@ -2,9 +2,10 @@
 require_once('mysqli_config_project.php');
 
 $userId = isset($_GET['userid']) ? (int)$_GET['userid'] : 0;
+$userName = isset($_GET['name']) ? htmlspecialchars($_GET['name']) : "Unknown User";
 
 if ($userId > 0) {
-    $query = "SELECT date_posted, content, likes FROM posts WHERE user_id = ?";
+    $query = "SELECT date_posted, content, likes FROM posts WHERE user_id = ? ORDER BY date_posted ASC";
     $stmt = mysqli_prepare($dbc, $query);
     mysqli_stmt_bind_param($stmt, "i", $userId);
     mysqli_stmt_execute($stmt);
@@ -26,14 +27,14 @@ mysqli_close($dbc);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $userName; ?>'s Posts</title>
+    <title>User's Posts</title>
 </head>
 <body>
 
     <?php include './components/banner.php'; ?>
 
     <div class="container">
-        <h2>User Posts</h2>
+        <h2><?php echo $userName; ?>'s Posts</h2>
         <div class="post-container">
             <?php
             if (!empty($all_posts)) {
