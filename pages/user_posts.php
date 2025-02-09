@@ -1,3 +1,11 @@
+<?php
+if (isset($_GET['userid'])) {
+    $userId = (int)$_GET['userid'];
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

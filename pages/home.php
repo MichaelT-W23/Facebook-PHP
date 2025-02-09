@@ -2,7 +2,7 @@
 require_once('mysqli_config_project.php');
 
 // Query to fetch all names from the People table
-$query = "SELECT Name FROM People";
+$query = "SELECT Name FROM users";
 $result = mysqli_query($dbc, $query);
 
 if (!$result) {
@@ -47,7 +47,7 @@ mysqli_close($dbc);
     </table>
 
     <div class="button-container">
-      <a href="/posts">
+      <a href="/posts?userid=1">
         <button>Go to Posts</button>
       </a>
     </div>
