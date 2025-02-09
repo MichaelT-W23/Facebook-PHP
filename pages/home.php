@@ -26,10 +26,8 @@ mysqli_close($dbc);
     <title>People List</title>
 </head>
 <body>
-
-    <div class="banner">
-        <h1>thefacebook</h1>
-    </div>
+  
+    <?php include './components/banner.php'; ?>
 
     <h2 style="text-align: center;">List of People</h2>
 
@@ -60,16 +58,6 @@ mysqli_close($dbc);
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-}
-
-.banner {
-  background-color: #3b5998;
-  color: white;
-  text-align: center;
-  padding: 1px;
-  font-size: 18px;
-  font-weight: bold;
 }
 
 table {

@@ -6,6 +6,7 @@
     <title>People List</title>
 </head>
 <body>
+    <?php include './components/banner.php'; ?>
 
     <h2 style="text-align: center;">SUPER COOL</h2>
 
