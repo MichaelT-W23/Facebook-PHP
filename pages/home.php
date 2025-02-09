@@ -1,8 +1,8 @@
 <?php
 require_once('mysqli_config_project.php');
 
-// Query to fetch all names from the People table
-$query = "SELECT Name FROM users";
+// Query to fetch all users from the Users table
+$query = "SELECT id, name, school, birthday, hometown FROM users";
 $result = mysqli_query($dbc, $query);
 
 if (!$result) {
@@ -15,7 +15,6 @@ if (!$result) {
 $all_rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 mysqli_close($dbc);
-
 ?>
 
 <!DOCTYPE html>
@@ -26,59 +25,97 @@ mysqli_close($dbc);
     <title>People List</title>
 </head>
 <body>
-  
+
     <?php include './components/banner.php'; ?>
 
-    <h2 style="text-align: center;">List of People</h2>
-
-    <table>
-        <tr>
-            <th>Name</th>
-        </tr>
-        <?php
-        if (!empty($all_rows)) {
-            foreach ($all_rows as $row) {
-                echo "<tr><td>" . htmlspecialchars($row['Name']) . "</td></tr>";
+    <div class="container">
+        <h2>List of People</h2>
+        <div class="cards-container">
+            <?php
+            if (!empty($all_rows)) {
+                foreach ($all_rows as $row) {
+                    echo '<div class="card">';
+                    echo '  <a href="/posts?userid=' . htmlspecialchars($row['id']) . '">';
+                    echo '      <div class="card-header">' . htmlspecialchars($row['name']) . '</div>';
+                    echo '      <div class="card-body">';
+                    echo '          <p><strong>School:</strong> ' . htmlspecialchars($row['school']) . '</p>';
+                    echo '          <p><strong>Birthday:</strong> ' . htmlspecialchars($row['birthday']) . '</p>';
+                    echo '          <p><strong>Hometown:</strong> ' . htmlspecialchars($row['hometown']) . '</p>';
+                    echo '      </div>';
+                    echo '  </a>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No records found</p>";
             }
-        } else {
-            echo "<tr><td colspan='1'>No records found</td></tr>";
-        }
-        ?>
-    </table>
-
-    <div class="button-container">
-      <a href="/posts?userid=1">
-        <button>Go to Posts</button>
-      </a>
+            ?>
+        </div>
     </div>
 
 </body>
 
+
 <style>
 
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
 }
 
-table {
-  width: 50%;
-  border-collapse: collapse;
-  margin: 20px auto;
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
 }
 
-th, td {
-  border: 1px solid black;
-  padding: 8px;
-  text-align: left;
+h2 {
+    text-align: center;
 }
 
-th {
-  background-color: #f2f2f2;
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.button-container {
-  text-align: center;
-  margin-top: 20px;
+.card {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-header {
+    background-color: #f2f2f2;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body p {
+    margin: 5px 0;
+    color: #555;
 }
 
 </style>
