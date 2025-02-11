@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS facebook_php_db;
+
+use facebook_php_db;
+
 CREATE TABLE users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
