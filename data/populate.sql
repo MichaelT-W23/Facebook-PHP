@@ -9,9 +9,9 @@ VALUES
 INSERT INTO posts (user_id, likes, date_posted, content)
 VALUES
 (1, 45, '2011-11-11', 'Programming is life.'),
-(1, 120, '1738-04-05', 'It\'s lit'),
-(2, 120, '2011-04-20', 'Man I\'m the plug fr fr'),
-(2, 95, '2013-08-01', 'Oh shi I\'m being arrested at the library'),
+(1, 120, '1738-04-05', 'It''s lit'),
+(2, 120, '2011-04-20', 'Man I''m the plug fr fr'),
+(2, 95, '2013-08-01', 'Oh shi I''m being arrested at the library'),
 (2, 555, '2025-01-21', '* In Scottish Accent * FREEEEDDDDOOOOOMMMMMMM'),
 (3, 69, '2024-01-31', 'Why is Josh Hawley yelling at me?'),
 (3, 310, '2025-02-09', 'Guys Michael is stealing my website idea, sue him.'),
