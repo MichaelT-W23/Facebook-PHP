@@ -1,4 +1,4 @@
-use facebook_php_db;
+USE facebook_php_db;
 
 INSERT INTO users (name, school, birthday, hometown) 
 VALUES 
